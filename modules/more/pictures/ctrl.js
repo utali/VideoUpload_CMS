@@ -101,13 +101,23 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
         })
     };
     //删除相册
-    $scope.removePictures = function ($index) {
+    $scope.removePictures = function (index) {
         dialogs.openDialog('删除相册','确定删除该相册？','确定','取消',function () {
             $timeout(function () {
-                $rootScope.pictures.splice($index,1);
+                $rootScope.pictures.splice(index,1);
                 //重新获取相册
             })
         },'')
-    }
+    };
+    //删除图片
+    $scope.removeImg = function (index) {
+        dialogs.openDialog('删除图片','确定删除该图片？','确定','取消',function () {
+            $timeout(function () {
+                $scope.images.splice(index, 1);
+                //重新获取图片
+            })
+        },'')
+    };
+
 
 }]);
