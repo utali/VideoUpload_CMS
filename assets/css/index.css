@@ -1,0 +1,15 @@
+.navTitle{
+    color:#fff;
+    height:40px;
+    line-height: 40px;
+    font-size: 1.3em;
+}
+.loginTitle{
+    text-align: center;
+}
+.titleButton{
+    font-size: 2em;
+}
+.loginBlock{
+    margin-top: 20px;
+}

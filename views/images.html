@@ -1,0 +1,13 @@
+<div class="row" style="background-color: #ffffff;padding: 20px 10px">
+    <div class="col-xs-12" style="margin-bottom: 15px">
+        <div class="col-xs-6">
+            <button class="btn btn-primary btn-large" ng-click="cancel()" style="margin-right: 10px">返回</button>
+            <button class="btn btn-primary btn-large" ng-click="upload()">上传图片</button>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1" ng-repeat="img in images" style="margin-bottom: 20px">
+        <a href="" ng-click="showImg(img)">
+            <img ng-src="{{'assets/demo/images/'+img}}" style="width: 100%;height: 100px">
+        </a>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.imageM.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        margin: 300px auto;
+    }
+
+    .modal-lg {
+        margin: 100px auto;
+    }
+}
+.pictures {
+    margin-bottom: 20px;
+    position: relative;
+}
+.pictures>span {
+    color: red;
+    position: absolute;
+    top: 5px;
+    right: 20px;
+    display: none;
+    background-color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+}
+.pictures:hover>span {
+    display: block;
+}

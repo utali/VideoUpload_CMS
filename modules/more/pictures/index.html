@@ -1,0 +1,77 @@
+<div ng-controller="ctrl-more-pictures">
+    <div id="page-heading">
+        <ol class="breadcrumb">
+            <li><a href="#/">首页</a></li>
+            <li class="active">相册</li>
+        </ol>
+
+        <h1>{{mainTitle}}</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="background-color: #ffffff;padding: 20px 10px" ng-show="!isInfo">
+            <div class="col-xs-12" style="margin-bottom: 15px">
+                <div class="col-xs-6">
+                    <button class="btn btn-primary btn-large" ng-click="createPictures()" style="margin-right: 10px">创建新相册</button>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2 pictures" ng-repeat="images in pictures">
+                <span ng-click="removePictures($index)">
+                    <i class="fa fa-trash-o"></i>
+                </span>
+                <a ng-click="showImages(images)">
+                    <img ng-src="{{images.img[0] ? 'assets/demo/images/'+images.img[0] : 'images/yeoman.png'}}" style="width:100%;height: 200px">
+                    <div class="text-center" style="margin-top: 10px">{{images.text}}</div>
+                </a>
+            </div>
+        </div>
+        <div ng-include="infoFile" ng-show="isInfo"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="imageModalContent.html" class="imageM">
+    <span style="position: absolute;top: 5px;right: 15px;font-size: 20px;z-index: 10000">
+        <a href="" ng-click="cancel()" style="text-decoration: none;">
+             &times;
+        </a>
+    </span>
+    <div class="modal-body text-center" style="">
+        <img ng-src="{{src}}">
+    </div>
+    <span style="position: absolute;top: 50%;left: 15px;font-size: 40px">
+        <a href="" ng-click="preShow()">
+            <i class="fa fa-chevron-left"></i>
+        </a>
+    </span>
+    <span style="position: absolute;top: 50%;right: 15px;font-size: 40px">
+        <a href="" ng-click="nextShow()">
+            <i class="fa fa-chevron-right"></i>
+        </a>
+    </span>
+</script>
+<script type="text/ng-template" id="newPictures.html">
+    <div class="modal-header">
+        <h4>新建相册</h4>
+    </div>
+    <div class="modal-body text-center" ng-show="isCreate">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="col-xs-3">
+                    <label class="control-label">相册名称:</label>
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" class="form-control" id="picturesName">
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="ok()">确定</button>
+            <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+    <div class="modal-body text-center" ng-show="!isCreate">
+        <h4>成功创建相册，开始创建图片？</h4>
+        <div class="row">
+            <button class="btn btn-primary" ng-click="ok('1')">确定</button>
+            <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        </div>
+    </div>
+</script>
