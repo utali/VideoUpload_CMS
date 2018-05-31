@@ -1278,7 +1278,36 @@ angular
                 var defer = $q.defer();
                 $timeout(function () {
                     $http.put('/picture/set/pictures',
-                        name
+                        {name: name}
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
+                return defer.promise;
+            },
+            getPictures: function () {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.get('/picture/get/pictures'
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
+                return defer.promise;
+            },
+            deletePictures: function (index) {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.put('/picture/set/pictures',
+                        index
                     )
                         .success(function(data) {
                             defer.resolve(data);

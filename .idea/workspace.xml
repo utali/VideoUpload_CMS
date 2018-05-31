@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8e7cea-6b76-40e6-80f5-2f59c632bc53" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/api/picture_api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/upload_api.js" afterPath="$PROJECT_DIR$/api/upload_api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/picture_api.js" afterPath="$PROJECT_DIR$/api/picture_api.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/more/pictures/ctrl.js" afterPath="$PROJECT_DIR$/modules/more/pictures/ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/controllers/Dashboard.js" afterPath="$PROJECT_DIR$/scripts/controllers/Dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/app.js" afterPath="$PROJECT_DIR$/scripts/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/shared/Factories.js" afterPath="$PROJECT_DIR$/scripts/shared/Factories.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/images.html" afterPath="$PROJECT_DIR$/views/images.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -33,11 +30,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Factories.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/shared/Factories.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="1279" column="52" lean-forward="false" selection-start-line="1279" selection-start-column="52" selection-end-line="1279" selection-end-column="52" />
+            <state relative-caret-position="482">
+              <caret line="1279" column="27" lean-forward="true" selection-start-line="1279" selection-start-column="27" selection-end-line="1279" selection-end-column="27" />
               <folding>
                 <element signature="e#42289#42461#0" expanded="false" />
                 <element signature="e#42486#49953#0" expanded="false" />
@@ -74,8 +81,8 @@
       <file leaf-file-name="ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/more/pictures/ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="87" column="54" lean-forward="false" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+            <state relative-caret-position="-72">
+              <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -84,8 +91,8 @@
       <file leaf-file-name="upload_api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/upload_api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="255" column="3" lean-forward="false" selection-start-line="255" selection-start-column="3" selection-end-line="255" selection-end-column="3" />
+            <state relative-caret-position="394">
+              <caret line="252" column="35" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="35" />
               <folding>
                 <element signature="e#597#3572#0" expanded="false" />
                 <element signature="e#3665#5608#0" expanded="false" />
@@ -99,8 +106,8 @@
       <file leaf-file-name="picture_api.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/picture_api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            <state relative-caret-position="302">
+              <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
               <folding>
                 <element signature="e#0#46#0" expanded="false" />
               </folding>
@@ -112,7 +119,7 @@
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="284">
-              <caret line="61" column="39" lean-forward="true" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+              <caret line="61" column="39" lean-forward="false" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -123,16 +130,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="224">
               <caret line="17" column="70" lean-forward="false" selection-start-line="17" selection-start-column="70" selection-end-line="17" selection-end-column="70" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="44" column="1" lean-forward="false" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -177,9 +174,9 @@
       <find>$s</find>
       <find>$scope.images</find>
       <find>rootScope.mainTitle</find>
+      <find>TencentYun</find>
       <find>upload</find>
       <find>$rootScope.mainTitle</find>
-      <find>TencentYun</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -204,7 +201,6 @@
         <option value="$PROJECT_DIR$/assets/less/bootstrap/modals.less" />
         <option value="$PROJECT_DIR$/assets/less/variables.less" />
         <option value="$PROJECT_DIR$/views/index.html" />
-        <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/modules/more/pictures/index.html" />
         <option value="$PROJECT_DIR$/api/auth_api.js" />
@@ -222,9 +218,10 @@
         <option value="$PROJECT_DIR$/views/images.html" />
         <option value="$PROJECT_DIR$/scripts/controllers/Dashboard.js" />
         <option value="$PROJECT_DIR$/api/upload_api.js" />
+        <option value="$PROJECT_DIR$/server.js" />
+        <option value="$PROJECT_DIR$/scripts/app.js" />
         <option value="$PROJECT_DIR$/scripts/shared/Factories.js" />
         <option value="$PROJECT_DIR$/api/picture_api.js" />
-        <option value="$PROJECT_DIR$/server.js" />
         <option value="$PROJECT_DIR$/modules/more/pictures/ctrl.js" />
       </list>
     </option>
@@ -268,6 +265,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="VideoUpload_CMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VideoUpload_CMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VideoUpload_CMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VideoUpload_CMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="VideoUpload_CMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -412,12 +437,12 @@
       <option name="presentableId" value="Default" />
       <updated>1527646274070</updated>
       <workItem from="1527646275393" duration="21916000" />
-      <workItem from="1527726530055" duration="22595000" />
+      <workItem from="1527726530055" duration="29711000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44511000" />
+    <option name="totallyTimeSpent" value="51627000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="353" y="23" width="1567" height="977" extended-state="0" />
@@ -431,8 +456,8 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3329453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36321303" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3329453" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36321303" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -469,7 +494,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="38" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -600,14 +625,6 @@
     <entry file="file://$PROJECT_DIR$/images/yeoman.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="61" column="216" lean-forward="false" selection-start-line="61" selection-start-column="216" selection-end-line="61" selection-end-column="216" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -803,10 +820,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="61" column="39" lean-forward="false" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="90" column="0" lean-forward="true" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/upload_api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="252" column="35" lean-forward="false" selection-start-line="252" selection-start-column="35" selection-end-line="252" selection-end-column="35" />
+          <folding>
+            <element signature="e#597#3572#0" expanded="false" />
+            <element signature="e#3665#5608#0" expanded="false" />
+            <element signature="n#!!block;n#getRandomSalt#0" expanded="false" />
+            <element signature="n#!!block;n#saveHttpResources#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/shared/Factories.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="1279" column="52" lean-forward="false" selection-start-line="1279" selection-start-column="52" selection-end-line="1279" selection-end-column="52" />
+        <state relative-caret-position="482">
+          <caret line="1279" column="27" lean-forward="true" selection-start-line="1279" selection-start-column="27" selection-end-line="1279" selection-end-column="27" />
           <folding>
             <element signature="e#42289#42461#0" expanded="false" />
             <element signature="e#42486#49953#0" expanded="false" />
@@ -817,39 +863,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/picture_api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        <state relative-caret-position="302">
+          <caret line="38" column="12" lean-forward="true" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
           <folding>
             <element signature="e#0#46#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="61" column="39" lean-forward="true" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/upload_api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="255" column="3" lean-forward="false" selection-start-line="255" selection-start-column="3" selection-end-line="255" selection-end-column="3" />
-          <folding>
-            <element signature="e#597#3572#0" expanded="false" />
-            <element signature="e#3665#5608#0" expanded="false" />
-            <element signature="n#!!block;n#getRandomSalt#0" expanded="false" />
-            <element signature="n#!!block;n#saveHttpResources#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/more/pictures/ctrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="87" column="54" lean-forward="false" selection-start-line="87" selection-start-column="54" selection-end-line="87" selection-end-column="54" />
+        <state relative-caret-position="-72">
+          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
           <folding />
         </state>
       </provider>

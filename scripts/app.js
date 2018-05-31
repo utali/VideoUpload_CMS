@@ -59,35 +59,43 @@ angular
         'ngAnimate',
         'oc.lazyLoad'
     ])
-    .controller('MainController', ['$scope', '$global', '$timeout', 'progressLoader', '$location', '$routeParams','$rootScope', function ($scope, $global, $timeout, progressLoader, $location, $routeParams, $rootScope) {
+    .controller('MainController', ['$scope', '$global', '$timeout', 'progressLoader', '$location', '$routeParams','$rootScope','picture', function ($scope, $global, $timeout, progressLoader, $location, $routeParams, $rootScope, picture) {
 
-        var images1 = ['yvonne.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
-        var images2 = ['thmb_arch_fountain.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
-        var images3 = ['thmb_arch_fireescape.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
-        var images4 = ['thmb_arch_building.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
-        var images5 = ['nature_woodstump.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
-        $rootScope.pictures = [
-            {
-                img: images1,
-                text: '图册1'
-            },
-            {
-                img: images2,
-                text: '图册2'
-            },
-            {
-                img: images3,
-                text: '图册3'
-            },
-            {
-                img: images4,
-                text: '图册4'
-            },
-            {
-                img: images5,
-                text: '图册5'
-            },
-        ];
+        // var images1 = ['yvonne.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
+        // var images2 = ['thmb_arch_fountain.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
+        // var images3 = ['thmb_arch_fireescape.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
+        // var images4 = ['thmb_arch_building.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
+        // var images5 = ['nature_woodstump.jpg', 'nature_woodstump.jpg', 'arch_fireescape.jpg', 'nature_river.jpg','thmb_nature_trees.jpg','thmb_nature_rider.jpg','thmb_nature_mossytree.jpg','thmb_nature_mill.jpg','thmb_nature_gardens.jpg','thmb_nature_enchantedcreek.jpg','thmb_ind_rusty.jpg','thmb_ind_machinery.jpg','thmb_ind_demolition.jpg','thmb_ind_corrosion_hazard.jpg','thmb_ind_code.jpg'];
+        // $rootScope.pictures = [
+        //     {
+        //         img: images1,
+        //         text: '图册1'
+        //     },
+        //     {
+        //         img: images2,
+        //         text: '图册2'
+        //     },
+        //     {
+        //         img: images3,
+        //         text: '图册3'
+        //     },
+        //     {
+        //         img: images4,
+        //         text: '图册4'
+        //     },
+        //     {
+        //         img: images5,
+        //         text: '图册5'
+        //     },
+        // ];
+
+        picture.getPictures().then(function (data) {
+            if (data.errCode === '0') {
+                $rootScope.pictures = data.message;
+            } else {
+                dialogs.openAlert('数据管理',data.message, '确定', '')
+            }
+        });
 
         $global.set('leftbarCollapsed', true);
         $global.set('leftbarShown', false);

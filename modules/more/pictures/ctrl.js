@@ -70,26 +70,53 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.createPictures = function () {
         $modal.open({
             templateUrl: 'newPictures.html',
-            controller: function ($scope,$modalInstance,pictures,upload) {
+            controller: function ($scope,$modalInstance,pictures,upload,picture) {
                 var picturesName = '';
                 $scope.isCreate = true;
                 $scope.ok = function (status) {
                     picturesName = $('#picturesName').val();
                     if (status === '1') {
-                        upload($rootScope.pictures[$rootScope.pictures.length-1].text);
                         $modalInstance.dismiss('cancel');
+                        $timeout(function () {
+                            upload(pictures[pictures.length-1].text);
+                        },100);
                         return;
                     }
                     if (picturesName === '') return;
-                    pictures.push({
-                        img: [],
-                        text: picturesName
-                    });
-                    picture.setPictures(picturesName);
+                    // pictures.push({
+                    //     img: [],
+                    //     text: picturesName
+                    // });
+                    createPictures(picturesName);
+                    // gainPictures();
                     $scope.isCreate = false;
                 };
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
+                };
+                // //获取相册
+                // function gainPictures() {
+                //     $timeout(function () {
+                //         picture.getPictures().then(function (data) {
+                //             if (data.errCode === '0') {
+                //                 pictures = data.message;
+                //             } else {
+                //                 dialogs.openAlert('数据管理',data.message, '确定', '')
+                //             }
+                //         });
+                //     })
+                // }
+                //新建相册
+                function createPictures(picturesName) {
+                    $timeout(function () {
+                        picture.setPictures(picturesName).then(function (data) {
+                            if (data.errCode === '0') {
+                                pictures = data.message;
+                            } else {
+                                dialogs.openAlert('数据管理',data.message, '确定', '')
+                            }
+                        });
+                    })
                 }
             },
             size: 'md',
@@ -107,8 +134,10 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.removePictures = function (index) {
         dialogs.openDialog('删除相册','确定删除该相册？','确定','取消',function () {
             $timeout(function () {
-                $rootScope.pictures.splice(index,1);
+                // $rootScope.pictures.splice(index,1);
+                picture.deletePictures(index);
                 //重新获取相册
+                gainPictures();
             })
         },'')
     };
@@ -116,7 +145,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.removeImg = function (index) {
         dialogs.openDialog('删除图片','确定删除该图片？','确定','取消',function () {
             $timeout(function () {
-                $scope.images.splice(index, 1);
+                // $scope.images.splice(index, 1);
                 //重新获取图片
             })
         },'')
@@ -130,6 +159,29 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 //重新获取图片
             })
         },'')
+    };
+    //获取相册
+    function gainPictures() {
+        $timeout(function () {
+            picture.getPictures().then(function (data) {
+                if (data.errCode === '0') {
+                    $rootScope.pictures = data.message;
+                } else {
+                    dialogs.openAlert('数据管理',data.message, '确定', '')
+                }
+            });
+        })
     }
-
+    //新建相册
+    function createPictures(picturesName) {
+        $timeout(function () {
+            picture.setPictures(picturesName).then(function (data) {
+                if (data.errCode === '0') {
+                    $rootScope.pictures = data.message;
+                } else {
+                    dialogs.openAlert('数据管理',data.message, '确定', '')
+                }
+            });
+        })
+    }
 }]);
