@@ -4,6 +4,7 @@ var express = require('express'),
     http = require('http'),
     exec = require('child_process').exec,
     fs = require('fs'),
+    cache = require('memory-cache'),
     formidable = require('formidable'),
     resource = require('./../resource'),
     TencentYun = require('../scripts/Tencentyun/Tencentyun'),
@@ -26,14 +27,14 @@ router.route('/').post(function (req, res, next) {
         // 限制上传文件大小 500M
         if (req.headers['content-length'] > UPLOADLIMIT) {
             var returnInfo = {
-                error:   -1,
+                error: -1,
                 message: '上传文件过大，请上传小于 500M 的文件'
             };
             res.send(returnInfo);
         } else {
             var form = new formidable.IncomingForm();
             form.keepExtensions = true;
-            form.multiples=true;//设置为多文件上传
+            form.multiples = true;//设置为多文件上传
             var dir = 'ENORTH/CMS/' + api_extends.date_yyyymmdd() + '/' + req.query.dir,
                 imgFolder = __dirname + '/../public/attached/' + api_extends.date_yyyymmdd();
 
@@ -42,13 +43,13 @@ router.route('/').post(function (req, res, next) {
             form.uploadDir = imgFolder;
             form.parse(req, function (err, fields, files) {
                 if (err) throw err;
-                if(files.file_name.length>1){
-                    var count =0,fileList=[];
+                if (files.file_name.length > 1) {
+                    var count = 0, fileList = [];
                     async.whilst(
-                        function(){
+                        function () {
                             return count < files.file_name.length;
                         },
-                        function(callback){
+                        function (callback) {
 
                             var key = dir + '_' + new Date().getTime();
                             var image = files.file_name[count];
@@ -57,7 +58,7 @@ router.route('/').post(function (req, res, next) {
                             key += '.' + path.split('.')[1];
                             var videoFirstPageKey = key.replace(key.split('.')[1], 'jpg');
 
-                            TencentYun.uploadFile(key, path, res, videoFirstPageKey, function(err, data){
+                            TencentYun.uploadFile(key, path, res, videoFirstPageKey, function (err, data) {
                                 console.log(data);
                                 fileList.push(data.url)
                                 count++;
@@ -65,15 +66,15 @@ router.route('/').post(function (req, res, next) {
                             });
 
                         },
-                        function(err){
+                        function (err) {
                             res.send(JSON.stringify({
                                 errCode: "0",
                                 fileList: fileList
                             }))
-                            console.log('err'+err)
+                            console.log('err' + err)
                         }
                     );
-                }else {
+                } else {
                     var key = dir + '_' + new Date().getTime();
                     var image = files.file_name;
                     var path = image.path;
@@ -128,8 +129,8 @@ router.route('/http_resource').post(function (req, res, next) {
                         res.send(err);
                     } else {
                         var returnInfo = {
-                            error:         0,
-                            url:           videoUrl,
+                            error: 0,
+                            url: videoUrl,
                             videoFirstUrl: data.downloadUrl
                         };
                         res.send(returnInfo);
@@ -225,19 +226,20 @@ function saveHttpResources(_res, _url, dir, next) {
 /**
  * @alias 上传图片
  */
-router.route('/img').post(function (req, res, next) {
+router.route('/img/:name').post(function (req, res, next) {
+    var name = encodeURI(req.params.name);
     // 限制上传文件大小 500M
     if (req.headers['content-length'] > UPLOADLIMIT) {
         var returnInfo = {
-            error:   -1,
+            error: -1,
             message: '上传文件过大，请上传小于 500M 的文件'
         };
         res.send(returnInfo);
     } else {
         var form = new formidable.IncomingForm();
         form.keepExtensions = true;
-        form.multiples=true;//设置为多文件上传
-        var imgFolder = __dirname + '/../public/images/' + api_extends.date_yyyymmdd();
+        form.multiples = true;//设置为多文件上传
+        var imgFolder = __dirname + '/../public/images/' + name + '/' + api_extends.date_yyyymmdd();
 
         if (!fs.existsSync(imgFolder)) fs.mkdirSync(imgFolder);
 

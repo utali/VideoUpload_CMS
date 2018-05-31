@@ -8,6 +8,7 @@ angular.module('theme.dashboard',  [])
             $rootScope.isInfo = true;
             $rootScope.images = images.img;
             $rootScope.mainTitle = images.text;
+            $rootScope.imageName = images.text;
         } else {
             $rootScope.isInfo = false;
             $rootScope.images = '';

@@ -7,7 +7,8 @@ var
     // auth_apiRouter = require('./api/auth_api'),
     fs = require('fs'),
     server = express();
-var upload_apuRouter = require('./api/upload_api');
+var upload_apiRouter = require('./api/upload_api'),
+    picture_apiRouter = require('./api/picture_api');
 
 server.use(bodyParser.json({limit: '500mb'}));
 server.use(bodyParser.urlencoded({limit: '500mb', extended: true}));
@@ -57,7 +58,8 @@ server
         next();
     })
     // .use('/auth/api', auth_apiRouter) //身份认证接口
-    .use('/upload', upload_apuRouter);
+    .use('/upload', upload_apiRouter)
+    .use('/picture', picture_apiRouter)
 
 server.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));

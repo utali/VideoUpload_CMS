@@ -4,15 +4,17 @@
 'use strict';
 
 var app = angular.module('themesApp');
-app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs','$modal',function ($scope,$rootScope,$timeout, dialogs,$modal) {
+app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs','$modal','picture',function ($scope,$rootScope,$timeout, dialogs,$modal, picture) {
     $scope.mainTitle = $rootScope.mainTitle || '相册';
     $scope.isInfo = $rootScope.isInfo;
     $scope.infoFile = 'views/images.html';
     $scope.images = $rootScope.images;
+    $scope.imageName = $rootScope.imageName;
     $scope.showImages = function (images) {
         $scope.isInfo = true;
         $scope.images = images.img;
         $scope.mainTitle = images.text;
+        $scope.imageName = images.text;
     };
     $scope.showImg = function (src) {
         $modal.open({
@@ -48,10 +50,10 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
         $scope.mainTitle = '相册';
     };
     //上传图片
-    $scope.upload = function (images) {
+    $scope.upload = function (name) {
         new BUpload({
             src:'imgFile',
-            upload_url : "/upload/img",
+            upload_url : "/upload/img/"+name,
             list_url : null,	//图片列表数据获取url
             search_url : null,	//图片搜索页面url
             grap_url : null, //搜索网络图片的抓取url
@@ -74,7 +76,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 $scope.ok = function (status) {
                     picturesName = $('#picturesName').val();
                     if (status === '1') {
-                        upload($rootScope.pictures[$rootScope.pictures.length-1].img);
+                        upload($rootScope.pictures[$rootScope.pictures.length-1].text);
                         $modalInstance.dismiss('cancel');
                         return;
                     }
@@ -83,6 +85,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                         img: [],
                         text: picturesName
                     });
+                    picture.setPictures(picturesName);
                     $scope.isCreate = false;
                 };
                 $scope.cancel = function () {

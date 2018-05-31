@@ -209,22 +209,6 @@ angular
                 });
                 return defer.promise;
             },
-            // uploadImg: function (imgs) {
-            //     var defer = $q.defer();
-            //     $timeout(function () {
-            //         $http.post(
-            //             'upload/img',
-            //             imgs
-            //         )
-            //             .success(function (data) {
-            //                 defer.resolve(data)
-            //             })
-            //             .error(function () {
-            //                 defer.resolve(errUnknown);
-            //             })
-            //     });
-            //     return defer.promise;
-            // }
         };
     })
     /* ------------------------------------------------------------------
@@ -1286,44 +1270,29 @@ angular
     * End Factory forms
     ------------------------------------------------------------------*/
     /* ------------------------------------------------------------------
-    * Begin Factory push
+    * Begin Factory picture
     ------------------------------------------------------------------*/
-    .factory('push', function ($q, $http, $timeout) {
+    .factory('picture', function ($q, $http, $timeout) {
         return {
-            getPushList: function (pushTitle, pushPersonId, pushStatus, startCreated, endCreated, pageNo, pageSize) {
-                var defer = $q.defer(),
-                    config = {
-                        method: 'GET',
-                        url: 'http://10.0.9.163:9038/push/' + pushTitle + '/' + pushPersonId + '/' + pushStatus + '/' + startCreated + '/' + endCreated + '/' + pageNo + '/' + pageSize + '/batch'
-                    };
-                $http(config)
-                    .success(function(data) {
-                        defer.resolve(data);
-                    })
-                    .error(function() {
-                        defer.resolve(errUnknown);
-                    });
+            setPictures: function (name) {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.put('/picture/set/pictures',
+                        name
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
                 return defer.promise;
             },
-            verifyCode: function (userId, pushValidCode) {
-                var defer = $q.defer(),
-                    config = {
-                        method: 'GET',
-                        url: 'http://10.0.9.163:9038/push/validcode/' + userId + '/' + pushValidCode
-                    };
-                $http(config)
-                    .success(function(data) {
-                        defer.resolve(data);
-                    })
-                    .error(function() {
-                        defer.resolve(errUnknown);
-                    });
-                return defer.promise;
-            }
         };
     })
     /* ------------------------------------------------------------------
-    * End Factory push
+    * End Factory picture
     ------------------------------------------------------------------*/
     /* ------------------------------------------------------------------
     * Begin Factory EChartsOptionsConfig
