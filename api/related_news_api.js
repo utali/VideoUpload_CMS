@@ -76,8 +76,8 @@ router.route('/add').post(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //相关新闻的ID
 					        PNewsId: data.PNewsId,//新闻物理ID 字符 必录项
                             newsId: data.newsId,//新闻逻辑ID 字符 必录项
@@ -160,8 +160,8 @@ router.route('/modify').put(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //相关新闻的ID
 					        PNewsId: data.PNewsId,//新闻物理ID 字符 必录项
                             newsId: data.newsId,//新闻逻辑ID 字符 必录项
@@ -220,8 +220,8 @@ router.route('/delete/:relatedNewsId').delete(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        relatedNewsId: '11111111111111111111111' //相关新闻ID
 			            }
 			        }*/
@@ -275,8 +275,8 @@ router.route('/:PNewsId/:relatedType/:lastRelatedNewsId/:pageSize/batch').get(fu
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							relatedNewsList://返回数据集合
@@ -341,8 +341,8 @@ router.route('/:relatedNewsId').get(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        "_id":"55caa7ffb9046ad902000010",//新闻id
 							"abs":"10日的主要内容有：国际泳联世锦赛上，中国队获得女子四乘一百米混合泳接力冠军……",//新闻摘要

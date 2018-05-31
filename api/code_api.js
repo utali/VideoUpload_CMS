@@ -44,8 +44,8 @@ router.route('/:definition/batch').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 							codeList: //编码内容列表
 							[
 								{
@@ -111,8 +111,8 @@ router.route('/path/batch').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 							codeList: //编码内容列表
 								{
 									"1":"super", //超级管理员

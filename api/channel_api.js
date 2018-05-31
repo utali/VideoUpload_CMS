@@ -55,8 +55,8 @@ router.route('/add').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //频道的ID
 					        channelName: '娱乐',//频道名称
 					        mnemonic: '',//助记符
@@ -125,8 +125,8 @@ router.route('/modify/:channelId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        channelId: '11111111111111111111111', //频道的ID
 					        channelName: '娱乐', //频道名称
 					        updated_at: '2015-07-02T09:20:40.000Z',//最后更新时间
@@ -185,13 +185,13 @@ router.route('/order/:channelType').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -245,8 +245,8 @@ router.route('/remove/:channelId').delete(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        channelId: '11111111111111111111111', //频道的ID
 					        channelName: '娱乐', //频道名称
 					        updated_at: '2015-07-02T09:20:40.000Z',//最后更新时间
@@ -304,8 +304,8 @@ router.route('/:channelName/:keyword/:channelType/:lastChannelId/:pageSize/batch
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							channelList://返回数据集合
@@ -378,8 +378,8 @@ router.route('/:parentChannelId/:lastChannelId/:pageSize/batch').get(function (r
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							channelList://返回数据集合
@@ -450,8 +450,8 @@ router.route('/child/:childChannelId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                {
 						        "_id":"55c997b76d14386506000002",//频道ID
 						        "channelName":"热点",//频道名称
@@ -516,8 +516,8 @@ router.route('/:channelId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        "_id":"55c997b76d14386506000002",//频道ID
 					        "channelName":"热点",//频道名称

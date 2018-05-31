@@ -58,8 +58,8 @@ router.route('/add').post(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //新闻的ID
 					        PNewsId: data.PNewsId,//新闻物理ID
                             newsId: data.newsId,//新闻逻辑ID
@@ -123,8 +123,8 @@ router.route('/modify/:groupEditionId').put(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //新闻的ID
 					        PNewsId: data.PNewsId,//新闻物理ID
                             newsId: data.newsId,//新闻逻辑ID
@@ -187,8 +187,8 @@ router.route('/order').put(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //新闻的ID
 					        PNewsId: data.PNewsId,//新闻物理ID
                             newsId: data.newsId,//新闻逻辑ID
@@ -248,8 +248,8 @@ router.route('/delete').put(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{}
+			            errCode: 0,
+			            message:{}
 			        }*/
                 } catch (err) {
                     console.log('err=' + err);
@@ -300,8 +300,8 @@ router.route('/:groupEditionType/:lastGroupEditionId/:pageSize/batch').get(funct
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							relatedNewsList://返回数据集合
@@ -368,8 +368,8 @@ router.route('/:groupEditionId').get(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        "_id":"55caa7ffb9046ad902000010",//组版新闻id
 							PNewsId: data.PNewsId,//新闻物理ID

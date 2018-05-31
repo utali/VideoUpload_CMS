@@ -48,10 +48,10 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
         $scope.mainTitle = '相册';
     };
     //上传图片
-    $scope.upload = function () {
+    $scope.upload = function (images) {
         new BUpload({
             src:'imgFile',
-            upload_url : "php/default/upload_json.php",
+            upload_url : "/upload/img",
             list_url : null,	//图片列表数据获取url
             search_url : null,	//图片搜索页面url
             grap_url : null, //搜索网络图片的抓取url
@@ -74,7 +74,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 $scope.ok = function (status) {
                     picturesName = $('#picturesName').val();
                     if (status === '1') {
-                        upload();
+                        upload($rootScope.pictures[$rootScope.pictures.length-1].img);
                         $modalInstance.dismiss('cancel');
                         return;
                     }
@@ -118,6 +118,15 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
             })
         },'')
     };
-
+    //设为封面
+    $scope.setFirst = function (index) {
+        dialogs.openDialog('设置封面','确定将该图片设为封面？','确定','取消',function () {
+            $timeout(function () {
+                var img = $scope.images.splice(index, 1);
+                $scope.images.unshift(img);
+                //重新获取图片
+            })
+        },'')
+    }
 
 }]);

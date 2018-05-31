@@ -61,8 +61,8 @@ router.route('/saveUser').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //保存人员的ID
 					        updated_at:: '2015-07-02T09:20:40.000Z'//修改时间
 					        creatorName: '超级管理员'//创建者名称
@@ -124,8 +124,8 @@ router.route('/invite').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id:"559b6b8ffb3be91906000001",//新增用户ID
 					        invitCode:"ZbDXGYiDYF",//邀请码 10位 0-9a-zA-Z组合
 					        updated_at:"2015-07-07T14:02:55.000Z",//更新时间
@@ -192,8 +192,8 @@ router.route('/modifyUser/:uid').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode:0,//成功
-						resultMsg:
+						errCode:0,//成功
+						message:
 						{
 							_id: '1111111111111111111111'，//修改人员的ID
 							nickName: '黄花' //人员昵称
@@ -252,8 +252,8 @@ router.route('/removeUser/:uid').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode:0,//成功
-						resultMsg:
+						errCode:0,//成功
+						message:
 						{
 							_id: '1111111111111111111111'//移除人员的ID
 						}
@@ -279,8 +279,8 @@ router.route('/getUser/:nickName/:comment/:page/:pagesize/batch').get(function (
 		var datUsers = JSON.parse(fs.readFileSync('datUsers.json', 'utf8'));
 		res.status(200).send(
 			{
-				resultCode: 0,
-				resultMsg: {
+				errCode: 0,
+				message: {
 					count: 1,
 					userList: datUsers
 				}
@@ -322,8 +322,8 @@ router.route('/getUser/:nickName/:comment/:page/:pagesize/batch').get(function (
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10,//返回条数
 							userList://返回数据集合
 							[
@@ -390,8 +390,8 @@ router.route('/sign/check').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//sign有效
-			            resultMsg:
+			            errCode: 0,//sign有效
+			            message:
 			            {
 						    "uid": "5596159630cabc1896cc0809",//用户ID
 						    "kind": "1"//用户类型
@@ -443,8 +443,8 @@ router.route('/gainUser/:uid').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:
+			            errCode: 0,
+			            message:
 			            {
 						    _id: ‘121212121212121212’, //人员ID
 							loginName: 'gssc', //人员登录用户名
@@ -515,8 +515,8 @@ router.route('/saveWorkgroup').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //保存工作组的ID
 					        updated_at: '2015-07-02T09:20:40.000Z'//最后更新时间
 					        creatorName: '超级管理员',//创建者名称
@@ -582,8 +582,8 @@ router.route('/modifyWorkgroup/:workgroupId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        workgroupId: '11111111111111111111111', //修改工作组的ID
 					        workgroupName: '工作组名称', //工作组名称
 					        updated_at: '2015-07-02T09:20:40.000Z',//最后更新时间
@@ -641,8 +641,8 @@ router.route('/removeWorkgroup/:workgroupId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                workgroupId: '11111111111111111111111' //移除工作组的ID
 			            }
 			        }*/
@@ -696,8 +696,8 @@ router.route('/workgroup/:uid/:page/:pagesize/batch').get(function (req, res, ne
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							workgroupList://返回数据集合
@@ -787,8 +787,8 @@ router.route('/workgroup/:operationId/:operationKind/batch').get(function (req, 
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							workgroupList://返回数据集合
@@ -856,8 +856,8 @@ router.route('/workgroup/only/:uid/:kind/:page/:pagesize/batch').get(function (r
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							workgroupList://返回数据集合
@@ -931,8 +931,8 @@ router.route('/getWorkgroup/:workgroupName/:comment/:page/:pagesize/batch').get(
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10, //所有工作组的数量
 			                workgroupList: //本次获取到的工作组集合信息
 			                [
@@ -1000,8 +1000,8 @@ router.route('/gainWorkgroup/:workgroupId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        _id: '111111111111111111111111', //工作组ID
 					        workgroupName: '工作组名称', //工作组名称
@@ -1072,8 +1072,8 @@ router.route('/saveOperation').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //保存权限的ID
 					        updated_at: '2015-07-02T09:20:40.000Z'//最后更新时间
 					        creatorName: '超级管理员',//创建者名称
@@ -1140,8 +1140,8 @@ router.route('/modifyOperation/:operationId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        operationId: '11111111111111111111111', //修改权限的ID
 					        operationName: '权限名称' //权限名称
 					        updated_at: '2015-07-02T09:20:40.000Z',//最后更新时间
@@ -1199,8 +1199,8 @@ router.route('/removeOperation/:operationId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                operationId: '11111111111111111111111' //修改权限的ID
 			            }
 			        }*/
@@ -1255,8 +1255,8 @@ router.route('/getOperation/:operationName/:comment/:workgroupId/:page/:pagesize
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:
+			            errCode: 0,
+			            message:
 			            {
 			                workgroupId: workgroupId, //工作组ID
 			                count: 10, //所有有效的权限集合数量
@@ -1329,8 +1329,8 @@ router.route('/getOperation/:operationName/:comment/:page/:pagesize/batch').get(
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10, //本次获取权限集合的数量
 			                operationList: //权限集合信息
 			                [
@@ -1398,8 +1398,8 @@ router.route('/gainOperation/:operationId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:{
+						errCode: 0,
+			            message:{
 					        _id: '111111111111111111111111', //工作组ID
 					        operationName: '权限名称',//权限名称
 							icon: '权限标志',//权限标志
@@ -1468,8 +1468,8 @@ router.route('/domain/save').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //保存域的ID
 					        domainName: '',//域名称
 							comment: '',//域说明
@@ -1534,8 +1534,8 @@ router.route('/domain/modify/:domainId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        domainId: '11111111111111111111111' //域的ID
 					        domainName: '',//域名称
 							comment: '',//域说明
@@ -1596,8 +1596,8 @@ router.route('domain/remove/:domainId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                domainId: '11111111111111111111111' //移除域的ID
 			            }
 			        }*/
@@ -1648,8 +1648,8 @@ router.route('/domain/:parentDomainId/batch').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10,//子域数量
 							domainList://返回子域集合
 							[
@@ -1723,8 +1723,8 @@ router.route('/domain/:domainId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					         _id: '111111111111111111111111', //域的ID
 					         domainName: '',//域名称
@@ -1808,8 +1808,8 @@ router.route('/bind/workgroup/user').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//绑定成功
-			            resultMsg:{}
+			            errCode: 0,//绑定成功
+			            message:{}
 			        }*/
 				} catch (err) {
 					console.log('err=' + err);
@@ -1866,8 +1866,8 @@ router.route('/bind/domain/user').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//绑定成功
-			            resultMsg:{}
+			            errCode: 0,//绑定成功
+			            message:{}
 			        }*/
 				} catch (err) {
 					console.log('err=' + err);
@@ -1922,8 +1922,8 @@ router.route('/unbind/domain/user').delete(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//解除绑定成功
-			            resultMsg:{}
+			            errCode: 0,//解除绑定成功
+			            message:{}
 			        }*/
 				} catch (err) {
 					console.log('err=' + err);
@@ -1981,8 +1981,8 @@ router.route('/bind/workgroup/operation').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//绑定成功
-			            resultMsg:{}
+			            errCode: 0,//绑定成功
+			            message:{}
 					}*/
 				} catch (err) {
 					console.log('err=' + err);
@@ -2037,8 +2037,8 @@ router.route('/bind/operation/workgroup').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//绑定成功
-			            resultMsg:{}
+			            errCode: 0,//绑定成功
+			            message:{}
 					}*/
 				} catch (err) {
 					console.log('err=' + err);
@@ -2094,8 +2094,8 @@ router.route('/login').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//登录成功
-			            resultMsg:{
+			            errCode: 0,//登录成功
+			            message:{
 						    uid: '111111111111111111111111', //
 						    nickName: '黄花', //用户昵称
 							sessionId: '', //sessionId
@@ -2192,8 +2192,8 @@ router.route('/modify/password/:uid').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//密码修改成功
-			            resultMsg:{
+			            errCode: 0,//密码修改成功
+			            message:{
 			                loginName: 'gssc' //用户登录用户名
 			            }
 			        }*/
@@ -2245,8 +2245,8 @@ router.route('/retrieve/password/:loginName').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//分配一个新的六位密码成功
-			            resultMsg:{
+			            errCode: 0,//分配一个新的六位密码成功
+			            message:{
 			                mail: 'gssc@126.com' //接收新密码的邮箱，即用户注册的邮箱
 					 }
 					 }*/
@@ -2300,8 +2300,8 @@ router.route('/retrieve/password/:loginName').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,//分配一个新的六位密码成功
-			            resultMsg:{
+			            errCode: 0,//分配一个新的六位密码成功
+			            message:{
 			                mail: 'gssc@126.com' //接收新密码的邮箱，即用户注册的邮箱
 					 }
 					 }*/
@@ -2351,8 +2351,8 @@ router.route('/generate/workgroup').post(function (req, res, next) {
 				try {
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:
+			            errCode: 0,
+			            message:
 			                {
 			                    workgroupList:[
                                     {
@@ -2387,10 +2387,10 @@ router.route('/generate/workgroup').post(function (req, res, next) {
 					    }
 					 }*/
 					result = JSON.parse(chunks);
-					if (result.resultCode != 0) {
+					if (result.errCode != 0) {
 						res.status(200).send(result);
 					} else {
-						workgroupList = result.resultMsg.workgroupList;
+						workgroupList = result.message.workgroupList;
 						/**errPath = [];
 						 workgroupList.forEach(function (workgroupData) {
 							workgroupPath = generateBaseFolder + '/' + workgroupData.path;
@@ -2435,9 +2435,9 @@ router.route('/generate/workgroup').post(function (req, res, next) {
 						 */
 						api_extends.generate(workgroupList, generateBaseFolder, function (errPath) {
 							if (errPath.length > 0) {
-								res.status(200).send({resultCode: 0, resultMsg: '存在没有生成的path,包括:' + errPath + '！'});
+								res.status(200).send({errCode: 0, message: '存在没有生成的path,包括:' + errPath + '！'});
 							} else {
-								res.status(200).send({resultCode: 0, resultMsg: '生成PATH目录成功！'});
+								res.status(200).send({errCode: 0, message: '生成PATH目录成功！'});
 							}
 						});
 					}
@@ -2501,8 +2501,8 @@ router.route('/syslog/:nickName/:loginName/:startDate/:endDate/:log_kind/:page/:
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:{
+						errCode: 0,
+			            message:{
 					        "count":1769,
 					        "sessionList":[
 					            {
@@ -2677,8 +2677,8 @@ router.route('/sysatt').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //系统属性ID
 					        updated_at: '2015-07-02T09:20:40.000Z'//最后更新时间
 					        creatorName: '超级管理员',//创建者名称
@@ -2743,13 +2743,13 @@ router.route('/sysatt/:sysattId').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        sysattId: "55a5c6b17e50a41c03000002",//系统属性ID
 					        domain: "tjmntv",//域名关键字
 					        updated_at: "2015-07-15T11:20:46.000Z",//最后更新时间
@@ -2804,13 +2804,13 @@ router.route('/removeSysatt/:sysattId').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                sysattId: '11111111111111111111111' //移除系统属性的ID
 			                domain: 'tmntv'//域名关键字
 			            }
@@ -2866,8 +2866,8 @@ router.route('/sysatt/:domain/:comment/:page/:pagesize/batch').get(function (req
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10, //所有系统属性的数量
 			                sysattList: //本次获取到的系统属性集合信息
 			                [
@@ -2935,7 +2935,7 @@ router.route('/sysatt/:domain').get(function (req, res, next) {
 				});
 				interfaceRes.on('end', function () {
 					try {
-						sysattObject = JSON.parse(chunks).resultMsg;
+						sysattObject = JSON.parse(chunks).message;
 						/**cacheObject[sysattObject.domain] = {
 							_id: sysattObject._id,
 							domain: sysattObject.domain,
@@ -2951,8 +2951,8 @@ router.route('/sysatt/:domain').get(function (req, res, next) {
 						res.status(200).send(JSON.parse(chunks));
 						//返回数据结构：
 						/**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        _id: "55a5c6b17e50a41c03000002",//系统属性ID
 					        domain: "tjmntv",//访问域名关键字
@@ -3024,8 +3024,8 @@ router.route('/order/workgroup/:workgroupName/:comment/:kind/batch').get(functio
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10, //所有工作组的数量
 			                workgroupList: //本次获取到的工作组集合信息
 			                [
@@ -3119,13 +3119,13 @@ router.route('/order/workgroup/:kind').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -3175,8 +3175,8 @@ router.route('/order/operation/:workgroupId/batch').get(function (req, res, next
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                count: 10, //本次获取权限集合的数量
 			                operationList: //权限集合信息
 			                [
@@ -3247,13 +3247,13 @@ router.route('/order/operation/:workgroupId').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -3272,8 +3272,8 @@ function cache_process(domain) {
 	var sysattObject = cacheObject[domain];
 	if (sysattObject) {
 		chunks = {
-			resultCode: 0,
-			resultMsg: sysattObject
+			errCode: 0,
+			message: sysattObject
 		};
 		return chunks;
 	}

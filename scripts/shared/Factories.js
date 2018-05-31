@@ -6,8 +6,8 @@
  */
 'use strict'
 var errUnknown = {
-    resultCode: 'unknown error',
-    resultMsg: '未知错误导致数据保存时出现错误，请稍后重试或联系系统管理员。'
+    errCode: 'unknown error',
+    message: '未知错误导致数据保存时出现错误，请稍后重试或联系系统管理员。'
 };
 angular
     .module('theme.factories', [])
@@ -31,7 +31,7 @@ angular
                     {headers: {sign: m_identity.sign}}
                 )
                     .success(function (data) {
-                        if (0 === data.resultCode) {
+                        if (0 === data.errCode) {
                             m_authenticated = true;
                         }
                         defer.resolve(m_identity);
@@ -94,8 +94,8 @@ angular
         function _query(codeKind, userSign, defer) {
             $http.get('/code/' + codeKind + '/batch', {headers: {sign: userSign}})
                 .success(function (data) {
-                    if (0 === data.resultCode) {
-                        defer.resolve(data.resultMsg.codeList);
+                    if (0 === data.errCode) {
+                        defer.resolve(data.message.codeList);
                     } else {
                         defer.resolve([]);
                     }
@@ -181,7 +181,7 @@ angular
     /* ------------------------------------------------------------------
      * Begin Factory uploadImage
      ------------------------------------------------------------------*/
-    .factory('upload', function ($q, $timeout) {
+    .factory('upload', function ($q, $timeout, $http) {
         return {
             getBase: function (obj, Eid) {
                 var defer = $q.defer();
@@ -191,7 +191,7 @@ angular
                     var file = docObj.files[0];
                     //判断类型是不是图片
                     if (!/image\/\w+/.test(file.type)) {
-                        defer.resolve({resultCode: 20013, resultMsg: "请上传图片格式的文件"});
+                        defer.resolve({errCode: 20013, message: "请上传图片格式的文件"});
                     } else {
                         var reader = new FileReader();
                         var imgurl = '';
@@ -203,12 +203,28 @@ angular
                             var basedata = this.result;
                             var array_list = basedata.split(',');
                             var baseresult = array_list[1];
-                            defer.resolve({resultCode: 0, resultMsg: {imgUrl: imgurl, baseData: baseresult}});
+                            defer.resolve({errCode: 0, message: {imgUrl: imgurl, baseData: baseresult}});
                         }
                     }
                 });
                 return defer.promise;
-            }
+            },
+            // uploadImg: function (imgs) {
+            //     var defer = $q.defer();
+            //     $timeout(function () {
+            //         $http.post(
+            //             'upload/img',
+            //             imgs
+            //         )
+            //             .success(function (data) {
+            //                 defer.resolve(data)
+            //             })
+            //             .error(function () {
+            //                 defer.resolve(errUnknown);
+            //             })
+            //     });
+            //     return defer.promise;
+            // }
         };
     })
     /* ------------------------------------------------------------------

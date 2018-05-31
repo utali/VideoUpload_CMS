@@ -23,14 +23,14 @@ angular
       //  )
       //      .success(function(data) {
       //        console.log(data);
-      //        //if (0 === data.resultCode) {
-      //        //  if(data.resultMsg.isFormal == '0'){
-      //        //    $scope.currentUser.dat = data.resultMsg;
+      //        //if (0 === data.errCode) {
+      //        //  if(data.message.isFormal == '0'){
+      //        //    $scope.currentUser.dat = data.message;
       //        //    _showDialogPasswordModify(function() {
       //        //      return false;
       //        //    });
       //        //  }else{
-      //        //    principal.login(data.resultMsg);
+      //        //    principal.login(data.message);
       //        //    $state.go('main');
       //        //  }
       //        //}else{

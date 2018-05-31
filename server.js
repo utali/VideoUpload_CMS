@@ -4,30 +4,36 @@ var
     path = require('path'),
     bodyParser = require('body-parser'),
     router = express.Router(),
-    auth_apiRouter = require('./api/auth_api'),
+    // auth_apiRouter = require('./api/auth_api'),
     fs = require('fs'),
     server = express();
+var upload_apuRouter = require('./api/upload_api');
 
-var
-    datKey = fs.readFileSync('certs/develop/cms_key.pem'),
-    datCert = fs.readFileSync('certs/develop/cms_cert.pem'),
-    options = {
-        key: datKey,
-        cert: datCert
-    };
+server.use(bodyParser.json({limit: '500mb'}));
+server.use(bodyParser.urlencoded({limit: '500mb', extended: true}));
+server.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, sign');
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+    res.header('X-Powered-By', 'iBeaconCS');
 
-optionsSpdy = {
-    key: datKey,
-    certs: datCert,
-    spdy: {
-        protocols: ['h2', 'spdy/3.1', 'http/1.1'],
-        plain: false,
-        connection: {
-            windowSize: 1024 * 1024,
-            autoSpdy31: true
-        }
+    if ('OPTIONS' == req.method) {
+        res.send(200);
+    } else {
+        /**ip = req.headers['x-forwarded-for'] ||
+         req.connection.remoteAddress ||
+         req.socket.remoteAddress ||
+         req.connection.socket.remoteAddress;
+         ip = ip.indexOf('::ffff:')>-1?ip.split('::ffff:')[1]:ip;
+         console.log('remote ip='+ip);
+         if (white_lit.indexOf(ip) == -1) {
+			res.status(200).send({resultCode: 99888, resultMsg: '访问客户端不在白名单范围内！'});
+		} else {
+			next();
+		}*/
+        next();
     }
-};
+});
 server
     .use(express.static('./'))
     .use(function (req, res, next) {
@@ -50,11 +56,8 @@ server
         console.log('**************************************************');
         next();
     })
-    .use('/auth/api', auth_apiRouter)//身份认证接口
-
-server.get('/demo', function (req, res) {
-    res.sendFile(path.join(__dirname + '/demo.html'));
-});
+    // .use('/auth/api', auth_apiRouter) //身份认证接口
+    .use('/upload', upload_apuRouter);
 
 server.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));

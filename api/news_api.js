@@ -64,8 +64,8 @@ router.route('/add').post(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        _id: '11111111111111111111111' //新闻的ID
 					        title: '娱乐',//新闻标题
 					        updated_at: '2015-07-02T09:20:40.000Z'//最后更新时间
@@ -142,8 +142,8 @@ router.route('/modify/:PNewsId').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        PNewsId: '11111111111111111111111', //新闻物理ID
 					        newsId: '',//新闻逻辑ID
 					        title: '娱乐', //新闻标题
@@ -201,13 +201,13 @@ router.route('/issue').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -259,13 +259,13 @@ router.route('/unissue').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -317,13 +317,13 @@ router.route('/recommend').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                PNewsId: '11111111111111111111111', //新闻物理ID
 			                newsId: '',//新闻逻辑ID
 					        title: '娱乐', //新闻标题
@@ -381,13 +381,13 @@ router.route('/remove/newssource').put(function (req, res, next) {
 			});
 			interfaceRes.on('end', function () {
 				try {
-					sysattObject = JSON.parse(chunks).resultMsg;
+					sysattObject = JSON.parse(chunks).message;
 					delete cacheObject[sysattObject.domain];
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                PNewsId: '11111111111111111111111', //新闻物理ID
 			                newsId: '',//新闻逻辑ID
 					        title: '娱乐', //新闻标题
@@ -448,8 +448,8 @@ router.route('/remove').put(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
 				} catch (err) {
@@ -503,8 +503,8 @@ router.route('/unremove/:PNewsId').delete(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 					        PNewsId: '11111111111111111111111', //新闻物理ID
 			                newsId: '',//新闻逻辑ID
 					        title: '娱乐', //新闻标题
@@ -565,8 +565,8 @@ router.route('/order/stick').delete(function (req, res, next) {
                     res.status(200).send(JSON.parse(chunks));
                     //返回数据结构：
                     /**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			            }
 			        }*/
                 } catch (err) {
@@ -633,8 +633,8 @@ router.route('/:title/:abs/:issueStatus/:isRound/:isStick/:isComment/:isEmoticon
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-			            resultCode: 0,
-			            resultMsg:{
+			            errCode: 0,
+			            message:{
 			                uid: uid, //用户ID
 			                count: 10,//所有有效的工作组集合数量
 							newsList://返回数据集合
@@ -708,8 +708,8 @@ router.route('/:PNewsId').get(function (req, res, next) {
 					res.status(200).send(JSON.parse(chunks));
 					//返回数据结构：
 					/**{
-						resultCode: 0,
-			            resultMsg:
+						errCode: 0,
+			            message:
 			            {
 					        "_id":"55caa7ffb9046ad902000010",//新闻id
 							"abs":"10日的主要内容有：国际泳联世锦赛上，中国队获得女子四乘一百米混合泳接力冠军……",//新闻摘要

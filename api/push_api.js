@@ -33,8 +33,8 @@ router.route('/validcode/:userId/:pushValidCode').get(function (req, res, next) 
 					res.status(200).send(JSON.parse(chunks));
 //返回数据结构：
 					/**{
-resultCode: 0,
-resultMsg:{
+errCode: 0,
+message:{
 
 }*/
 				} catch (err) {
@@ -76,8 +76,8 @@ router.route('/:pushTitle/:pushPersonId/:pushStatus/:startCreated/:endCreated/:p
 					res.status(200).send(JSON.parse(chunks));
 //返回数据结构：
 					/**{
-resultCode: 0,
-resultMsg:{
+errCode: 0,
+message:{
 
 }*/
 				} catch (err) {
