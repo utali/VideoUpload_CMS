@@ -1,3 +1,3 @@
-exports.INTERFACEHOST = '10.0.199.180';
-exports.INTERFACEPORT = '5001';
+exports.INTERFACEHOST = '127.0.0.1';
+exports.INTERFACEPORT = '5060';
 

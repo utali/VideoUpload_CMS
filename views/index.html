@@ -16,7 +16,7 @@
                                 <div class="col-xs-12">
                                     <carousel interval="myInterval" style="width:100%;margin:0 auto" disable-animation="true">
                                         <slide ng-repeat="item in pictures" active="slide.active">
-                                            <img ng-src="{{'assets/demo/images/'+item.img[0]}}" style="margin:auto;height: 500px">
+                                            <img ng-src="{{item.src[0]}}" style="margin:auto;height: 500px">
                                             <div class="carousel-caption">
                                                 <h4>Slide {{$index}}</h4>
                                                 <p>{{item.text}}</p>
@@ -27,7 +27,7 @@
                             </div>
                             <div class="row" style="margin-top: 15px">
                                 <div class="col-xs-2" ng-repeat="item in pictures.slice(0,5)">
-                                    <img ng-src="{{'assets/demo/images/'+item.img[0]}}" style="width:100%;height: 160px">
+                                    <img ng-src="{{item.src[0]}}" style="width:100%;height: 160px">
                                 </div>
                                 <div class="col-xs-2">
                                     <button class="btn btn-primary btn-block" style="margin-top: 63px" ng-click="showVideos()">更多视频</button>
@@ -42,7 +42,7 @@
                             <div class="row text-center" ng-repeat="item in pictures.slice(0,4)" style="margin-bottom: 15px">
                                 <div class="col-xs-12">
                                     <a style="display: inline-block;height: 145px" ng-click="showPictures(item)">
-                                        <img ng-src="{{'assets/demo/images/'+item.img[0]}}" style="height: 85%">
+                                        <img ng-src="{{item.src[0]}}" style="height: 85%">
                                         <div>{{item.text}}</div>
                                     </a>
                                 </div>

@@ -12,7 +12,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.imageName = $rootScope.imageName;
     $scope.showImages = function (images) {
         $scope.isInfo = true;
-        $scope.images = images.img;
+        $scope.images = images.src;
         $scope.mainTitle = images.text;
         $scope.imageName = images.text;
     };
@@ -20,7 +20,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
         $modal.open({
             templateUrl: 'imageModalContent.html',
             controller:  ['$scope', '$modalInstance','images', function ($scope, $modalInstance,images) {
-                $scope.src = 'assets/demo/images/'+ src;
+                $scope.src = src;
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
                 };
@@ -28,13 +28,13 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                     var index = images.findIndex(function (item) {
                         return item === $scope.src.slice(19,)
                     });
-                    index > 0 ? $scope.src = 'assets/demo/images/'+images[index-1] : '';
+                    index > 0 ? $scope.src = images[index-1] : '';
                 };
                 $scope.nextShow = function () {
                     var index = images.findIndex(function (item) {
                         return item === $scope.src.slice(19,)
                     });
-                    index < images.length-1 ? $scope.src = 'assets/demo/images/'+images[index+1] : '';
+                    index < images.length-1 ? $scope.src = images[index+1] : '';
                 };
             }],
             size:        'lg',
@@ -60,9 +60,11 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
             max_filesize : 1024,
             max_filenum : 10,
             callback : function(data) {
-                console.log(data);
-                //重新获取相册列表
-
+                var idx = data.message.findIndex(function (item) {
+                    return item.text === name;
+                });
+               $rootScope.pictures = data.message;
+               $scope.images = data.message[idx].src;
             }
         });
     };
@@ -70,26 +72,20 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.createPictures = function () {
         $modal.open({
             templateUrl: 'newPictures.html',
-            controller: function ($scope,$modalInstance,pictures,upload,picture) {
+            controller: function ($scope,$modalInstance,pictures,upload,picture, dialogs,$rootScope) {
                 var picturesName = '';
-                $scope.isCreate = true;
+                // $scope.isCreate = true;
                 $scope.ok = function (status) {
                     picturesName = $('#picturesName').val();
-                    if (status === '1') {
-                        $modalInstance.dismiss('cancel');
-                        $timeout(function () {
-                            upload(pictures[pictures.length-1].text);
-                        },100);
-                        return;
-                    }
+                    // if (status === '1') {
+                    //     $modalInstance.dismiss('cancel');
+                    //     $timeout(function () {
+                    //         upload(pictures[pictures.length-1].text);
+                    //     },100);
+                    //     return;
+                    // }
                     if (picturesName === '') return;
-                    // pictures.push({
-                    //     img: [],
-                    //     text: picturesName
-                    // });
                     createPictures(picturesName);
-                    // gainPictures();
-                    $scope.isCreate = false;
                 };
                 $scope.cancel = function () {
                     $modalInstance.dismiss('cancel');
@@ -97,7 +93,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 // //获取相册
                 // function gainPictures() {
                 //     $timeout(function () {
-                //         picture.getPictures().then(function (data) {
+                //         picture.getPictures('img').then(function (data) {
                 //             if (data.errCode === '0') {
                 //                 pictures = data.message;
                 //             } else {
@@ -109,9 +105,16 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 //新建相册
                 function createPictures(picturesName) {
                     $timeout(function () {
-                        picture.setPictures(picturesName).then(function (data) {
+                        picture.setPictures(picturesName, 'img').then(function (data) {
                             if (data.errCode === '0') {
-                                pictures = data.message;
+                                $timeout(function () {
+                                    $modalInstance.dismiss('cancel');
+                                    dialogs.openAlert('创建相册','成功创建相册！','确定', function () {
+                                        pictures = data.message;
+                                        $rootScope.pictures = data.message;
+                                    });
+                                    // $scope.isCreate = false;
+                                })
                             } else {
                                 dialogs.openAlert('数据管理',data.message, '确定', '')
                             }
@@ -134,10 +137,14 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.removePictures = function (index) {
         dialogs.openDialog('删除相册','确定删除该相册？','确定','取消',function () {
             $timeout(function () {
-                // $rootScope.pictures.splice(index,1);
-                picture.deletePictures(index);
-                //重新获取相册
-                gainPictures();
+                picture.deletePictures(index, 'img').then(function (data) {
+                    if (data.errCode === '0') {
+                        dialogs.openAlert('删除相册','成功删除相册！','确定','');
+                        gainPictures();
+                    } else {
+                        dialogs.openAlert('删除相册',data.message, '确定','');
+                    }
+                });
             })
         },'')
     };
@@ -145,8 +152,19 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.removeImg = function (index) {
         dialogs.openDialog('删除图片','确定删除该图片？','确定','取消',function () {
             $timeout(function () {
-                // $scope.images.splice(index, 1);
-                //重新获取图片
+                var idx = $rootScope.pictures.findIndex(function (item) {
+                    return item.text === $scope.imageName;
+                });
+                picture.deleteImage(index, idx, 'img').then(function (data) {
+                    if (data.errCode === '0') {
+                        $timeout(function () {
+                            $rootScope.pictures = data.message;
+                            $scope.images = data.message[idx].src;
+                        })
+                    } else {
+                        dialogs.openAlert('删除图片',data.message, '确定','');
+                    }
+                })
             })
         },'')
     };
@@ -163,7 +181,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     //获取相册
     function gainPictures() {
         $timeout(function () {
-            picture.getPictures().then(function (data) {
+            picture.getPictures('img').then(function (data) {
                 if (data.errCode === '0') {
                     $rootScope.pictures = data.message;
                 } else {
@@ -175,7 +193,7 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     //新建相册
     function createPictures(picturesName) {
         $timeout(function () {
-            picture.setPictures(picturesName).then(function (data) {
+            picture.setPictures(picturesName, 'img').then(function (data) {
                 if (data.errCode === '0') {
                     $rootScope.pictures = data.message;
                 } else {

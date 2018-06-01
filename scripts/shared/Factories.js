@@ -1274,10 +1274,10 @@ angular
     ------------------------------------------------------------------*/
     .factory('picture', function ($q, $http, $timeout) {
         return {
-            setPictures: function (name) {
+            setPictures: function (name, type) {
                 var defer = $q.defer();
                 $timeout(function () {
-                    $http.put('/picture/set/pictures',
+                    $http.put('/picture/set/' + type,
                         {name: name}
                     )
                         .success(function(data) {
@@ -1289,10 +1289,10 @@ angular
                 });
                 return defer.promise;
             },
-            getPictures: function () {
+            getPictures: function (type) {
                 var defer = $q.defer();
                 $timeout(function () {
-                    $http.get('/picture/get/pictures'
+                    $http.get('/picture/get/'+ type
                     )
                         .success(function(data) {
                             defer.resolve(data);
@@ -1303,11 +1303,26 @@ angular
                 });
                 return defer.promise;
             },
-            deletePictures: function (index) {
+            deletePictures: function (index,type) {
                 var defer = $q.defer();
                 $timeout(function () {
-                    $http.put('/picture/set/pictures',
-                        index
+                    $http.put('/picture/delete/' + type,
+                        {index: index}
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
+                return defer.promise;
+            },
+            deleteImage: function (index,idx, type) {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.post('/picture/delete/' + type,
+                        {index: index, idx: idx}
                     )
                         .success(function(data) {
                             defer.resolve(data);

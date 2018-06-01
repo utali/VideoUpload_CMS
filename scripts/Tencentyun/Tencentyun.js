@@ -12,14 +12,12 @@ var tencentyun = require('tencentyun'),
 function Tencentyun() {
 }
 
-var interfaceHost = resource.INTERFACEHOST, interfacePort = resource.INTERFACEPORT,
-	uploadType = {image: 4258, video: 7059},
-	image_bucket = 'tjmntv',
-	video_bucket = 'enorth123',
-	projectId = '10007044',
-	userid = 0,
-	secretId = 'AKIDYNX96iPjsJAo1f67L7FSC4DJe8h2j0FL',
-	secretKey = 'nPViNSHaKaEReH1vipjE8kvMQgRh405z';
+var uploadType = {image: 4258, video: 7059},
+	image_bucket = 'uta',
+	video_bucket = 'video',
+	projectId = '1256844084',
+	secretId = 'AKIDOfkdKpZC6nHYdU7ZppZ3HGzSgfOsq5pK',
+	secretKey = 'MTO4WjjV3MSJwKVSAetufBSTFo9HBrJW';
 
 tencentyun.conf.setAppInfo(projectId, secretId, secretKey);
 qcloud_video.conf.setAppInfo(projectId, secretId, secretKey);

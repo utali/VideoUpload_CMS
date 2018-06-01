@@ -6,7 +6,7 @@ angular.module('theme.dashboard',  [])
         $location.path('/more/pictures');
         if (images) {
             $rootScope.isInfo = true;
-            $rootScope.images = images.img;
+            $rootScope.images = images.src;
             $rootScope.mainTitle = images.text;
             $rootScope.imageName = images.text;
         } else {
