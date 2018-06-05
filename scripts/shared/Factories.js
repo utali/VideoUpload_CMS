@@ -1333,6 +1333,36 @@ angular
                 });
                 return defer.promise;
             },
+            setDefault: function (index, idx, type) {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.post('/picture/setFirst/' + type,
+                        {index: index, idx: idx}
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
+                return defer.promise;
+            },
+            setNewTitle: function (oldTitle, newTitle, type) {
+                var defer = $q.defer();
+                $timeout(function () {
+                    $http.post('/picture/editTitle/' + type,
+                        {oldTitle: oldTitle, newTitle: newTitle}
+                    )
+                        .success(function(data) {
+                            defer.resolve(data);
+                        })
+                        .error(function() {
+                            defer.resolve(errUnknown);
+                        });
+                });
+                return defer.promise;
+            },
         };
     })
     /* ------------------------------------------------------------------

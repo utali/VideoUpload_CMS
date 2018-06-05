@@ -8,8 +8,46 @@
         <h1>{{mainTitle}}</h1>
     </div>
     <div class="container-fluid">
-        <div class="col-sm-4 col-md-3 col-lg-2">
-            <img ng-src="" alt="">
+        <div ng-show="!isInfo">
+            <div class="col-xs-12" style="margin-bottom: 15px">
+                <div class="col-xs-6">
+                    <div flow-init
+                         flow-files-submitted="upload($flow)">
+                        <div flow-drop ng-class="dropClass">
+                            <span class="btn btn-primary btn-large" flow-btn>添加视频</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3 col-lg-2 videos" ng-repeat="item in videos">
+                <span ng-click="removeVideos($index)" class="remove">
+                    <i class="fa fa-trash-o"></i>
+                </span>
+                <a ng-click="showVideos(item)">
+                    <video src="{{item.src}}" style="width:100%;height: 200px"></video>
+                    <div class="text-center" style="margin-top: 10px">{{item.text}}</div>
+                </a>
+            </div>
         </div>
+        <div ng-include="infoFile" ng-show="isInfo"></div>
+    </div>
+    <div class="col-xs-12 text-center progress_modal" ng-show="isUploaded">
+        <div id="fileName"  style="margin-top: 20px"></div>
+        <div id="fileSize"  style="margin-top: 20px"></div>
+        <div id="fileType"  style="margin-top: 20px"></div>
+        <div id="progressNumber"  style="margin-top: 20px"></div>
+        <progressbar class="progress-striped active" value="percents" type="info">{{percents}}%</progressbar>
+
     </div>
 </div>
+<script type="text/ng-template" id="showEdit.html">
+    <form class="form-horizontal text-center" style="height: 200px;">
+        <div class="col-xs-12 text-center" style="margin-top: 30px">
+            <input type="text" class="form-control" placeholder="新标题" ng-model="newTitle" id="newTitle">
+        </div>
+        <div class="col-xs-12 text-center" style="margin-top: 20px">
+            <button class="btn btn-default" ng-click="cancel()">取消</button>
+            <button class="btn btn-primary" ng-click="ok()">确定</button>
+        </div>
+    </form>
+</script>

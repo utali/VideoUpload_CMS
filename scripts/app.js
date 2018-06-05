@@ -67,13 +67,25 @@ angular
                 picture.getPictures('img').then(function (data) {
                     if (data.errCode === '0') {
                         $rootScope.pictures = data.message;
-                        console.log(data.message);
                     } else {
                         dialogs.openAlert('数据管理',data.message, '确定', '')
                     }
                 });
             })
         }
+        //获取视频
+        function gainVideos() {
+            $timeout(function () {
+                picture.getPictures('video').then(function (data) {
+                    if (data.errCode === '0') {
+                        $rootScope.videos = data.message;
+                    } else {
+                        dialogs.openAlert('数据管理',data.message, '确定', '')
+                    }
+                });
+            })
+        }
+        gainVideos();
         gainPictures();
 
         $global.set('leftbarCollapsed', true);

@@ -15,7 +15,14 @@ angular.module('theme.dashboard',  [])
             $rootScope.mainTitle = '相册';
         }
       };
-      $scope.showVideos = function () {
-          $location.path('/more/videos')
-      }
+      $scope.showVideos = function (video) {
+          $location.path('/more/videos');
+          if (video) {
+              $rootScope.isInfo = true;
+              $rootScope.videoText = video.text;
+              $rootScope.videoSrc = video.src;
+          } else {
+              $rootScope.isInfo = false;
+          }
+      };
   }]);

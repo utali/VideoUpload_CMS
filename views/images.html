@@ -3,6 +3,7 @@
         <div class="col-xs-6">
             <button class="btn btn-primary btn-large" ng-click="cancel()" style="margin-right: 10px">返回</button>
             <button class="btn btn-primary btn-large" ng-click="upload(imageName)">上传图片</button>
+            <button class="btn btn-primary btn-large" ng-click="edit(imageName)">修改相册名称</button>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1 pictures" ng-repeat="img in images" style="margin-bottom: 20px">
@@ -16,3 +17,14 @@
         </a>
     </div>
 </div>
+<script type="text/ng-template" id="showEdit.html">
+    <form class="form-horizontal text-center" style="height: 200px;">
+        <div class="col-xs-12 text-center" style="margin-top: 30px">
+            <input type="text" class="form-control" placeholder="新标题" ng-model="newTitle" id="newTitle">
+        </div>
+        <div class="col-xs-12 text-center" style="margin-top: 20px">
+            <button class="btn btn-default" ng-click="cancel()">取消</button>
+            <button class="btn btn-primary" ng-click="ok()">确定</button>
+        </div>
+    </form>
+</script>

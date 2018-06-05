@@ -60,11 +60,17 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
             max_filesize : 1024,
             max_filenum : 10,
             callback : function(data) {
-                var idx = data.message.findIndex(function (item) {
-                    return item.text === name;
-                });
-               $rootScope.pictures = data.message;
-               $scope.images = data.message[idx].src;
+                if (data.length>0){
+                    gainPictures();
+                    dialogs.openAlert('图片上传','图片上传成功！','确定',function () {
+                        $timeout(function () {
+                            var idx = $rootScope.pictures.findIndex(function (item) {
+                                return item.text === name;
+                            });
+                            $scope.images = $rootScope.pictures[idx].src;
+                        },100)
+                    })
+                }
             }
         });
     };
@@ -110,8 +116,10 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                                 $timeout(function () {
                                     $modalInstance.dismiss('cancel');
                                     dialogs.openAlert('创建相册','成功创建相册！','确定', function () {
-                                        pictures = data.message;
-                                        $rootScope.pictures = data.message;
+                                        $timeout(function () {
+                                            pictures = data.message;
+                                            $rootScope.pictures = data.message;
+                                        },100)
                                     });
                                     // $scope.isCreate = false;
                                 })
@@ -131,6 +139,23 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                     return $scope.upload;
                 }
             }
+        })
+    };
+    //编辑视频名称
+    $scope.edit = function (name) {
+        $modal.open({
+            templateUrl: 'showEdit.html',
+            controller: function ($scope,$modalInstance) {
+                $scope.newTitle = name;
+                $scope.cancel = function(){
+                    $modalInstance.close();
+                };
+                $scope.ok = function () {
+                    changeTitle(name, $('#newTitle').val());
+                    $modalInstance.close();
+                }
+            },
+            size: 'md'
         })
     };
     //删除相册
@@ -172,9 +197,19 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
     $scope.setFirst = function (index) {
         dialogs.openDialog('设置封面','确定将该图片设为封面？','确定','取消',function () {
             $timeout(function () {
-                var img = $scope.images.splice(index, 1);
-                $scope.images.unshift(img);
-                //重新获取图片
+                var idx = $rootScope.pictures.findIndex(function (item) {
+                    return item.text === $scope.imageName;
+                });
+                picture.setDefault(index, idx, 'img').then(function (data) {
+                    if (data.errCode === '0') {
+                        $timeout(function () {
+                            $rootScope.pictures = data.message;
+                            $scope.images = data.message[idx].src;
+                        })
+                    } else {
+                        dialogs.openAlert('设置封面',data.message, '确定','');
+                    }
+                })
             })
         },'')
     };
@@ -202,4 +237,21 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
             });
         })
     }
+    //修改标题
+    function changeTitle(title, newTitle) {
+        $timeout(function () {
+            picture.setNewTitle(title, newTitle, 'img').then(function (data) {
+                if(data.errCode === '0') {
+                    dialogs.openAlert('修改标题','修改标题成功！','确定', function () {
+                        $timeout(function () {
+                            $rootScope.pictures = data.message;
+                        },100)
+                    })
+                } else {
+                    dialogs.openAlert('修改标题', data.message, '确定')
+                }
+            })
+        })
+    }
+
 }]);
