@@ -26,13 +26,13 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                 };
                 $scope.preShow = function () {
                     var index = images.findIndex(function (item) {
-                        return item === $scope.src.slice(19,)
+                        return item === $scope.src
                     });
                     index > 0 ? $scope.src = images[index-1] : '';
                 };
                 $scope.nextShow = function () {
                     var index = images.findIndex(function (item) {
-                        return item === $scope.src.slice(19,)
+                        return item === $scope.src
                     });
                     index < images.length-1 ? $scope.src = images[index+1] : '';
                 };
@@ -245,6 +245,8 @@ app.controller('ctrl-more-pictures', ['$scope','$rootScope','$timeout', 'dialogs
                     dialogs.openAlert('修改标题','修改标题成功！','确定', function () {
                         $timeout(function () {
                             $rootScope.pictures = data.message;
+                            $scope.mainTitle = newTitle;
+                            $scope.imageName = newTitle;
                         },100)
                     })
                 } else {

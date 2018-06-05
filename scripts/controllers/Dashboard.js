@@ -2,6 +2,7 @@
 
 angular.module('theme.dashboard',  [])
   .controller('DashboardController', ['$scope','$location','$rootScope', function ($scope,$location,$rootScope) {
+      $rootScope.isLoggedIn = localStorage.getItem('isLogin');
       $scope.showPictures = function (images) {
         $location.path('/more/pictures');
         if (images) {

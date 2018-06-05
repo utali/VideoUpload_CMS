@@ -19,20 +19,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
-							<div class="col-sm-6" style="margin-top: 13px">
-								<div class="input-group">
-									<span class="input-group-addon"><i class="fa fa-barcode"></i></span>
-									<input autofocus required type="text" ng-model="validCode" class="form-control" id="validCode" placeholder="验证码" ng-keypress="enter($event)">
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<img ng-src="/auth/api/validCode?"+ Math.random() id="vcImg" class="img-rounded" onclick="javascript:this.src='/auth/api/validCode?'+ Math.random()" style="width: 20rem;">
-							</div>
-						</div>
-						<!--<div style="text-align: center;">-->
-							<!--<img ng-src="/auth/api/validCode?"+ Math.random() id="vcImg" class="img-rounded" onclick="javascript:this.src='/auth/api/validCode?'+ Math.random()" style="width: 20rem;">-->
-						<!--</div>-->
 					</form>
 					
 		</div>

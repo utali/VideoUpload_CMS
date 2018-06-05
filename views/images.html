@@ -2,16 +2,16 @@
     <div class="col-xs-12" style="margin-bottom: 15px">
         <div class="col-xs-6">
             <button class="btn btn-primary btn-large" ng-click="cancel()" style="margin-right: 10px">返回</button>
-            <button class="btn btn-primary btn-large" ng-click="upload(imageName)">上传图片</button>
-            <button class="btn btn-primary btn-large" ng-click="edit(imageName)">修改相册名称</button>
+            <button class="btn btn-primary btn-large" ng-click="upload(imageName)" ng-show="isLoggedIn">上传图片</button>
+            <button class="btn btn-primary btn-large" ng-click="edit(imageName)" ng-show="isLoggedIn">修改相册名称</button>
         </div>
     </div>
     <div class="col-xs-6 col-sm-3 col-md-2 col-lg-1 pictures" ng-repeat="img in images" style="margin-bottom: 20px">
-        <span ng-click="removeImg($index)" class="remove">
+        <span ng-click="removeImg($index)" class="remove" ng-show="isLoggedIn">
             <i class="fa fa-trash-o"></i>
         </span>
-        <span ng-click="setFirst($index)" class="set" ng-show="$index !== 0 ">设为封面</span>
-        <span class="set" ng-show="$index === 0 ">封面</span>
+        <span ng-click="setFirst($index)" class="set" ng-show="$index !== 0 && isLoggedIn">设为封面</span>
+        <span class="set" ng-show="$index === 0&&isLoggedIn">封面</span>
         <a href="" ng-click="showImg(img)">
             <img ng-src="{{img}}" style="width: 100%;height: 100px">
         </a>

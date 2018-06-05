@@ -2,7 +2,7 @@
 
 angular
   .module('theme.pages-controllers', [])
-  .controller('SignupPageController', ['$scope', '$global','$http', function ($scope, $global, $http, principal) {
+  .controller('SignupPageController', ['$scope', '$global','$http','dialogs','$location','$rootScope','$timeout', function ($scope, $global, $http,dialogs,$location,$rootScope,$timeout) {
       $scope.currentUser = {
         dat:{},
         old_password: '',
@@ -17,30 +17,20 @@ angular
     });
 
       $scope.signIn = function() {
-      //  $http.post(
-      //      '/auth/api/login',
-      //      {loginName: $scope.username, loginPassword: $scope.password}
-      //  )
-      //      .success(function(data) {
-      //        console.log(data);
-      //        //if (0 === data.errCode) {
-      //        //  if(data.message.isFormal == '0'){
-      //        //    $scope.currentUser.dat = data.message;
-      //        //    _showDialogPasswordModify(function() {
-      //        //      return false;
-      //        //    });
-      //        //  }else{
-      //        //    principal.login(data.message);
-      //        //    $state.go('main');
-      //        //  }
-      //        //}else{
-      //        //  $scope.hasError = '';
-      //        //  $state.go('login');
-      //        //}
-      //      })
-      //      .error(function(data){
-      //          console.log(data);
-      //      })
+        if (!$('#username').val() || !$('#password').val()) {
+          dialogs.openAlert('登录','请输入正确的用户名或密码！','确定');
+          return;
+        }
+        var userData = localStorage.getItem('userData_mmssnnddbbrr');
+        userData = JSON.parse(userData);
+        if ($('#username').val() === userData.userName && $('#password').val()+'qwertyuiopasdfghjkl' === userData.password){
+            $timeout(function () {
+                localStorage.setItem('isLogin','true');
+                $location.path('/');
+            })
+        } else {
+            dialogs.openAlert('登录','请输入正确的用户名或密码！','确定');
+        }
       };
 
   }])

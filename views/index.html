@@ -16,7 +16,7 @@
                                 <div class="col-xs-12">
                                     <carousel interval="myInterval" style="width:100%;margin:0 auto" disable-animation="true">
                                         <slide ng-repeat="item in videos.slice(0,3)" active="slide.active" ng-click="showVideos(item)">
-                                            <video src="{{item.src}}" style="margin:auto;height: 500px"></video>
+                                            <video src={{item.src}} style="margin:auto;height: 500px"></video>
                                             <div class="carousel-caption">
                                                 <p>{{item.text}}</p>
                                             </div>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="row" style="margin-top: 15px">
                                 <div class="col-xs-2" ng-repeat="item in videos.slice(3,7)" ng-click="showVideos(item)">
-                                    <video src="{{item.src}}" style="width:100%;height: 160px"></video>
+                                    <video src={{item.src}} style="width:100%;height: 160px"></video>
                                 </div>
                                 <div class="col-xs-2">
                                     <button class="btn btn-primary btn-block" style="margin-top: 63px" ng-click="showVideos()">更多视频</button>

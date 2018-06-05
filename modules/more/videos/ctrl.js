@@ -144,6 +144,7 @@ app.controller('ctrl-more-videos', ['$scope','$rootScope','$timeout', 'dialogs',
                     dialogs.openAlert('修改标题','修改标题成功！','确定', function () {
                         $timeout(function () {
                             $rootScope.videos = data.message;
+                            $scope.videoText = newTitle;
                         },100)
                     })
                 } else {

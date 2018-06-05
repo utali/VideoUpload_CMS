@@ -61,6 +61,8 @@ angular
     ])
     .controller('MainController', ['$scope', '$global', '$timeout', 'progressLoader', '$location', '$routeParams','$rootScope','picture','dialogs', function ($scope, $global, $timeout, progressLoader, $location, $routeParams, $rootScope, picture,dialogs) {
 
+        localStorage.setItem('userData_mmssnnddbbrr',angular.toJson({userName: 'admin',password:'1234qwerqwertyuiopasdfghjkl'}));
+
         //获取相册
         function gainPictures() {
             $timeout(function () {
@@ -140,9 +142,11 @@ angular
 
         // there are better ways to do this, e.g. using a dedicated service
         // but for the purposes of this demo this will do :P
-        $scope.isLoggedIn = false;
+        //检查是否登录
+        $scope.isLoggedIn = localStorage.getItem('isLogin');
         $scope.logOut = function () {
             $scope.isLoggedIn = false;
+            localStorage.removeItem('isLogin');
         };
         $scope.logIn = function () {
             $scope.isLoggedIn = true;
