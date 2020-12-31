@@ -20,9 +20,9 @@ var router = express.Router();
 var UPLOADLIMIT = 500 * 1024 * 1024;
 
 var cos = new COS({
-   AppId: '1256844084',
-    SecretId: 'AKIDOfkdKpZC6nHYdU7ZppZ3HGzSgfOsq5pK',
-    SecretKey: 'MTO4WjjV3MSJwKVSAetufBSTFo9HBrJW',
+   AppId: '**',
+    SecretId: '***',
+    SecretKey: '***',
 });
 var tengxun_cos = {
     Bucket: 'uta-1256844084',
@@ -30,9 +30,9 @@ var tengxun_cos = {
 };
 var image_bucket = 'uta',
     video_bucket = 'video',
-    projectId = '1256844084',
-    secretId = 'AKIDOfkdKpZC6nHYdU7ZppZ3HGzSgfOsq5pK',
-    secretKey = 'MTO4WjjV3MSJwKVSAetufBSTFo9HBrJW';
+    projectId = '***',
+    secretId = '****',
+    secretKey = '***';
 tencentyun.conf.setAppInfo(projectId, secretId, secretKey);
 
 // 图片上传
